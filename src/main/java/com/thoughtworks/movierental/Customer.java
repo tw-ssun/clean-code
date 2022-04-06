@@ -23,7 +23,11 @@ public class Customer {
     public String textStatement() {
         StatementGenerator generator = getStatementGenerator();
         return generator.generateTextStatement();
+    }
 
+    public String htmlStatement() {
+        StatementGenerator generator = getStatementGenerator();
+        return generator.generateHtmlStatement();
     }
 
     private StatementGenerator getStatementGenerator(){

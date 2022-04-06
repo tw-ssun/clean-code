@@ -38,4 +38,24 @@ public class CustomerTest {
         String statement = customer.textStatement();
         Assert.assertEquals(expected, statement);
     }
+
+    @Test
+    public void shouldGenerateHTMLStatement() {
+
+        Customer customer = new Customer("Loreena");
+        customer.addRental(new Rental(new Movie("Star war1", 2), 4));
+        customer.addRental(new Rental(new Movie("Star war2", 2), 4));
+        customer.addRental(new Rental(new Movie("Star war3", 2), 4));
+
+        String expect = "<h1>Rental Record for <b>Loreena</b></h1>" +
+                "<p>" +
+                "Star war1: <b>3.0</b><br/>" +
+                "Star war2: <b>3.0</b><br/>" +
+                "Star war3: <b>3.0</b><br/>" +
+                "</p><p>Amount owed is <b> 9.0</b></p></br>" +
+                "<p>You earned <b>3</b> frequent renter points </p></br>";
+
+        String htmlstatement = customer.htmlStatement();
+        Assert.assertEquals(expect, htmlstatement);
+    }
 }

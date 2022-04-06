@@ -58,6 +58,17 @@ public class StatementGenerator {
     }
 
     public String generateHtmlStatement(){
-        throw new NotImplementedException();
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("<h1>Rental Record for <b>%s</b></h1>", this.customerName));
+        sb.append("<p>");
+        for(MovieRentalItem rentItem : this.movieRentals){
+            sb.append(String.format("%s: <b>%s</b><br/>",
+                    rentItem.movieName,
+                    rentItem.rentalAmount.toString()));
+        }
+        sb.append("</p>");
+        sb.append(String.format("<p>Amount owed is <b> %s</b></p></br>",this.totalRental));
+        sb.append(String.format("<p>You earned <b>%s</b> frequent renter points </p></br>", this.totalFreqRenterPoint));
+        return sb.toString();
     }
 }
