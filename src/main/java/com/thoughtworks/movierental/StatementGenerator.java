@@ -11,6 +11,16 @@ public class StatementGenerator {
     double totalRental;
     int totalFreqRenterPoint;
 
+    private StatementGenerator(String customerName,
+                              ArrayList<MovieRentalItem> movieRentals,
+                              double totalRental,
+                              int totalFreqRenterPoint){
+        this.customerName = customerName;
+        this.movieRentals = movieRentals;
+        this.totalRental = totalRental;
+        this.totalFreqRenterPoint = totalFreqRenterPoint;
+    }
+
     public static StatementGenerator factory(Customer customer){
         String customerName = customer.getName();
         ArrayList<MovieRentalItem> movieRentals = new ArrayList<>();
@@ -32,15 +42,6 @@ public class StatementGenerator {
                 totalFreqRenterPoint);
     }
 
-    private StatementGenerator(String customerName,
-                              ArrayList<MovieRentalItem> movieRentals,
-                              double totalRental,
-                              int totalFreqRenterPoint){
-        this.customerName = customerName;
-        this.movieRentals = movieRentals;
-        this.totalRental = totalRental;
-        this.totalFreqRenterPoint = totalFreqRenterPoint;
-    }
 
     public String generateTextStatement(){
         StringBuilder sb = new StringBuilder();
