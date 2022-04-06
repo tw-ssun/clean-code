@@ -10,7 +10,7 @@ public class CustomerTest {
         String expected = "Rental Record for testname\n" +
                 "Amount owed is 0.0\n" +
                 "You earned 0 frequent renter points";
-        String statement = customer.statement();
+        String statement = customer.textStatement();
         Assert.assertEquals(expected, statement);
     }
 
@@ -35,7 +35,7 @@ public class CustomerTest {
                 "\tboring movie 3\t0.0\n" +
                 "Amount owed is 7.5\n" +
                 "You earned 4 frequent renter points";
-        String statement = customer.statement();
+        String statement = customer.textStatement();
         Assert.assertEquals(expected, statement);
     }
 }
