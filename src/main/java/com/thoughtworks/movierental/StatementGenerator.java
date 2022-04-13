@@ -1,7 +1,5 @@
 package com.thoughtworks.movierental;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
 
 public class StatementGenerator {
@@ -19,6 +17,15 @@ public class StatementGenerator {
         this.movieRentals = movieRentals;
         this.totalRental = totalRental;
         this.totalFreqRenterPoint = totalFreqRenterPoint;
+    }
+
+    public static StatementGenerator factory(Customer customer, Rentals rentals){
+        String customerName = customer.getName();
+        double totalRental = rentals.getTotalRental();
+        ArrayList<MovieRentalItem> movieRentalItems = rentals.getMovieRentalItems();
+        int totalFreqRenterPoint = rentals.getFrequentRenterPoint();
+
+        return new StatementGenerator(customerName, movieRentalItems, totalRental, totalFreqRenterPoint);
     }
 
     public static StatementGenerator factory(Customer customer){

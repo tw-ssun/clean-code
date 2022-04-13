@@ -18,34 +18,33 @@ public class CustomerTest {
     public void testStatementGenerationWithRentals() {
         Customer customer = new Customer("testname");
         customer.addRental(new Rental(
-                new Movie("boring movie", 1),
+                new Movie("boring movie", MovieType.NEW_RELEASE),
                 2
         ));
         customer.addRental(new Rental(
-                new Movie("boring movie 2", 2),
+                new Movie("boring movie 2", MovieType.CHILDRENS),
                 2
         ));
         customer.addRental(new Rental(
-                new Movie("boring movie 3", 3),
+                new Movie("boring movie 3", MovieType.BLUERAY),
                 2
         ));
         String expected = "Rental Record for testname\n" +
                 "\tboring movie\t6.0\n" +
                 "\tboring movie 2\t1.5\n" +
-                "\tboring movie 3\t0.0\n" +
-                "Amount owed is 7.5\n" +
-                "You earned 4 frequent renter points";
+                "\tboring movie 3\t8.0\n" +
+                "Amount owed is 15.5\n" +
+                "You earned 6 frequent renter points";
         String statement = customer.textStatement();
         Assert.assertEquals(expected, statement);
     }
 
     @Test
     public void shouldGenerateHTMLStatement() {
-
         Customer customer = new Customer("Loreena");
-        customer.addRental(new Rental(new Movie("Star war1", 2), 4));
-        customer.addRental(new Rental(new Movie("Star war2", 2), 4));
-        customer.addRental(new Rental(new Movie("Star war3", 2), 4));
+        customer.addRental(new Rental(new Movie("Star war1", MovieType.CHILDRENS), 4));
+        customer.addRental(new Rental(new Movie("Star war2", MovieType.CHILDRENS), 4));
+        customer.addRental(new Rental(new Movie("Star war3", MovieType.CHILDRENS), 4));
 
         String expect = "<h1>Rental Record for <b>Loreena</b></h1>" +
                 "<p>" +

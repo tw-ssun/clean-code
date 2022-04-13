@@ -1,24 +1,21 @@
 package com.thoughtworks.movierental;
 
 public class Movie {
-    public static final int CHILDRENS = 2;
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
 
     private String title;
-    private int priceCode;
+    private MovieType movieType;
 
-    public Movie(String title, int priceCode) {
+    public Movie(String title, MovieType movieType) {
         this.title = title;
-        this.priceCode = priceCode;
+        this.movieType = movieType;
     }
 
-    public int getPriceCode() {
-        return priceCode;
+    public MovieType getMovieType() {
+        return movieType;
     }
 
-    public void setPriceCode(int arg) {
-        priceCode = arg;
+    public void setMovieType(MovieType type) {
+        movieType = type;
     }
 
     public String getTitle() {

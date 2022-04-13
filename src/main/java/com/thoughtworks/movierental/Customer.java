@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Customer {
     private String name;
-    private List<Rental> rentals = new ArrayList<>();
+    private ArrayList<Rental> rentals = new ArrayList<>();
 
     public Customer(String name) {
         this.name = name;
@@ -31,7 +31,7 @@ public class Customer {
     }
 
     private StatementGenerator getStatementGenerator(){
-        return StatementGenerator.factory(this);
+        return StatementGenerator.factory(this, (Rentals)rentals);
     }
 }
 
